@@ -58,6 +58,15 @@ class TestAccountService(TestCase):
         """Run once before all tests"""
         talisman.force_https = False
 
+
+
+    def test_cors_security(self):
+        """It should return a CORS header"""
+        response = self.client.get('/', environ_overrides=HTTPS_ENVIRON)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        # Check for the CORS header
+        self.assertEqual(response.headers.get('Access-Control-Allow-Origin'), '*')
+
     ######################################################################
     #  H E L P E R   M E T H O D S
     ######################################################################
