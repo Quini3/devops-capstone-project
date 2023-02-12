@@ -20,9 +20,3 @@ def init_logging(app, logger_name: str):
     for handler in app.logger.handlers:
         handler.setFormatter(formatter)
     app.logger.info("Logging handler established")
-
-
-def test_method_not_allowed(self):
-    """It should not allow an illegal method call"""
-    resp = self.client.delete(BASE_URL)
-    self.assertEqual(resp.status_code, status.HTTP_405_METHOD_NOT_ALLOWED)
