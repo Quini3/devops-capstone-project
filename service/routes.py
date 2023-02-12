@@ -90,9 +90,7 @@ def get_account(account_id):
     account = Account.find(account_id)
     if not account:
         abort(status.HTTP_404_NOT_FOUND, f"Account with id [{account_id}] could not be found.")
-    # use the Account.find() method to find the account
-    # abort() with a status.HTTP_404_NOT_FOUND if it cannot be found
-    # return the serialize() version of the account with a return code of status.HTTP_200_OK
+    
     return account.serialise(), status.HTTP_200_OK
 
 
